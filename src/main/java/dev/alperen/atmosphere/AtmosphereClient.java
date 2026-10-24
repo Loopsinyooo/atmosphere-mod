@@ -5,7 +5,7 @@ import dev.alperen.atmosphere.render.CloudRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
 import net.minecraft.client.world.ClientWorld;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +13,12 @@ import org.slf4j.LoggerFactory;
 public final class AtmosphereClient implements ClientModInitializer {
 
     public static final String MOD_ID = "atmosphere";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    public static final Logger LOGGER =
+            LoggerFactory.getLogger(MOD_ID);
 
     private final CloudRenderer clouds = new CloudRenderer();
+
     private ClientWorld activeWorld;
 
     @Override
@@ -28,16 +31,18 @@ public final class AtmosphereClient implements ClientModInitializer {
                 activeWorld = client.world;
             }
 
-            if (client.world == null || client.player == null || client.isPaused()) {
+            if (client.world == null
+                    || client.player == null
+                    || client.isPaused()) {
                 return;
             }
 
             clouds.tick();
         });
 
-        WorldRenderEvents.LAST.register(context -> {
-            if (context.world() == activeWorld) {
-                clouds.render(context);
+        WorldRenderEvents.END_MAIN.register(context -> {
+            if (activeWorld != null) {
+                clouds.render();
             }
         });
 
@@ -46,6 +51,10 @@ public final class AtmosphereClient implements ClientModInitializer {
             activeWorld = null;
         });
 
-        LOGGER.info("[{}] Initialized on Java {}.", MOD_ID, Runtime.version());
+        LOGGER.info(
+                "[{}] Development foundation initialized on Java {}.",
+                MOD_ID,
+                Runtime.version()
+        );
     }
 }
