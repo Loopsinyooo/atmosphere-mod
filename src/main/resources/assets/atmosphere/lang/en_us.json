@@ -1,0 +1,13 @@
+{
+  "title.atmosphere.config": "Atmosphere Ayarları",
+  "category.atmosphere.general": "Genel",
+  "option.atmosphere.clouds": "Özel bulutlar (henüz uygulanmadı)",
+  "option.atmosphere.cloud_height": "Bulut yüksekliği",
+  "option.atmosphere.cloud_layers": "Bulut katman sayısı",
+  "option.atmosphere.cloud_opacity": "Bulut opaklığı (%)",
+  "option.atmosphere.cloud_speed": "Bulut hızı",
+  "option.atmosphere.mushroom_particles": "Mantar parçacıkları (henüz uygulanmadı)",
+  "option.atmosphere.shooting_stars": "Yıldız kayması (henüz uygulanmadı)",
+  "option.atmosphere.aurora": "Aurora (henüz uygulanmadı)",
+  "option.atmosphere.particle_density": "Parçacık yoğunluğu (%)"
+}
