@@ -21,23 +21,34 @@ public final class AtmosphereConfig {
         cloudHeight = clamp(cloudHeight, 64, 384);
         cloudLayers = clamp(cloudLayers, 1, 8);
         cloudLayerSpacing = clamp(cloudLayerSpacing, 1, 12);
+
         cloudOpacityPercent = clamp(cloudOpacityPercent, 0, 100);
         cloudSpeedPercent = clamp(cloudSpeedPercent, 0, 400);
-        particleDensityPercent = clamp(particleDensityPercent, 0, 100);
+
+        particleDensityPercent = clamp(
+                particleDensityPercent, 0, 100
+        );
+    }
+
+    public void save() {
+        ConfigManager.save(this);
     }
 
     public AtmosphereConfig copy() {
         AtmosphereConfig result = new AtmosphereConfig();
+
         result.cloudsEnabled = cloudsEnabled;
         result.cloudHeight = cloudHeight;
         result.cloudLayers = cloudLayers;
         result.cloudLayerSpacing = cloudLayerSpacing;
         result.cloudOpacityPercent = cloudOpacityPercent;
         result.cloudSpeedPercent = cloudSpeedPercent;
+
         result.mushroomParticlesEnabled = mushroomParticlesEnabled;
         result.shootingStarsEnabled = shootingStarsEnabled;
         result.auroraEnabled = auroraEnabled;
         result.particleDensityPercent = particleDensityPercent;
+
         return result;
     }
 
