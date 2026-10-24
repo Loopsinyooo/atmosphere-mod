@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "atmosphere",
+  "version": "${mod_version}",
+  "name": "Atmosphere",
+  "description": "An atmospheric Minecraft mod for immersive skies and effects.",
+  "authors": [
+    "Alperen"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Loopsinyooo/atmosphere-mod"
+  },
+  "license": "MIT",
+  "icon": "assets/atmosphere/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.alperen.atmosphere.AtmosphereClient"
+    ],
+    "modmenu": [
+      "dev.alperen.atmosphere.config.AtmosphereModMenu"
+    ]
+  },
+  "mixins": [
+    "atmosphere.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "cloth-config": ">=${cloth_config_version}",
+    "modmenu": ">=${modmenu_version}"
+  }
+}
